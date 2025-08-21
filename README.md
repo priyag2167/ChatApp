@@ -132,6 +132,28 @@ For physical devices on the same network, update `API_BASE_URL` and `SOCKET_URL`
 
 ---
 
+Sample Users 1:
+```bash
+user email :- priyag@gmail.com
+password :- 12345678
+```
+Sample Users 2:
+```bash
+user email :- harry@gmail.com
+password :- 12345678
+```
+Sample Users 3:
+```bash
+user email :- riya@gmail.com
+password :- 12345678
+```
+Sample Users 4:
+```bash
+user email :- emma@gmail.com
+password :- 12345678
+```
+---
+
 ### Common Troubleshooting
 
 - Metro cannot find the server or sockets don't connect:
