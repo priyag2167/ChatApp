@@ -5,3 +5,4 @@ node_modules/
 # React Native build
 /android/
 /ios/
+.expo/
