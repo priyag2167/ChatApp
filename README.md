@@ -30,7 +30,8 @@ Location: `server/`
 ```bash
 cd server
 npm install
-# or: yarn
+# or
+yarn install (recommanded)
 ```
 
 2. Create a `.env` file in `server/`:
@@ -52,8 +53,8 @@ Notes:
 # Development (auto-restart)
 npm run dev
 
-# Or regular start
-npm start
+# Or 
+yarn dev
 ```
 
 4. Verify the server:
