@@ -1,6 +1,7 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
+const { io } = require("../server");
 
 const signToken = (user) => {
   const secret = process.env.JWT_SECRET || "dev_secret";
@@ -23,6 +24,10 @@ exports.registerController = async (req, res) => {
     const token = signToken(user);
     const safe = user.toObject();
     delete safe.password;
+    try {
+      // Notify all connected clients that a new user exists
+      io?.emit?.("user:created", { user: { _id: String(user._id), name: user.name, email: user.email, status: user.status } });
+    } catch (_) {}
     return res.status(201).json({ user: safe, token });
   } catch (err) {
     return res.status(500).json({ message: "Server error" });

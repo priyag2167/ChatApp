@@ -41,8 +41,27 @@ const HomeScreen = ({ navigation }: Props) => {
         if (!token) return;
         const socket = connectSocket(token);
         socketRef.current = socket;
-        socket.on('presence:update', ({ userId, online }: any) => {
-            setUsers((prev) => prev.map((u: any) => u._id === userId ? { ...u, status: online ? 'online' : 'offline' } : u));
+        socket.on('presence:update', async ({ userId, online }: any) => {
+            setUsers((prev) => {
+                const exists = prev.some((u: any) => u._id === userId);
+                if (!exists) return prev;
+                return prev.map((u: any) => u._id === userId ? { ...u, status: online ? 'online' : 'offline' } : u);
+            });
+            // If presence arrives for an unknown user, refresh the list
+            try {
+                const known = users.some((u: any) => u._id === userId);
+                if (!known) {
+                    const list = await chatApi.listUsers();
+                    setUsers(list);
+                }
+            } catch {}
+        });
+        socket.on('user:created', async (_payload: any) => {
+            // Re-fetch users so the new user shows up immediately
+            try {
+                const list = await chatApi.listUsers();
+                setUsers(list);
+            } catch {}
         });
         socket.on('typing:start', ({ from }: any) => {
             setTypingUserIds((prev) => {
@@ -82,6 +101,7 @@ const HomeScreen = ({ navigation }: Props) => {
             socket.off('message:read');
             socket.off('typing:start');
             socket.off('typing:stop');
+            socket.off('user:created');
         };
     }, [token]);
 

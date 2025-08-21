@@ -82,6 +82,9 @@ io.use((socket, next) => {
   }
 });
 
+// Export io for use in controllers
+module.exports.io = io;
+
 io.on("connection", (socket) => {
   const userId = socket.user?.id;
   if (userId) {
