@@ -38,8 +38,8 @@ yarn install (recommanded)
 
 ```bash
 PORT=5050
-MONGO_URI="mongodb://127.0.0.1:27017/chatapp"
-JWT_SECRET="your_dev_secret_here"
+MONGO_URI=mongodb+srv://priyag:shanu%402167@clusterchat.kphvmqw.mongodb.net/?retryWrites=true&w=majority&appName=ClusterChat
+JWT_SECRET=dev_secret
 ```
 
 Notes:
