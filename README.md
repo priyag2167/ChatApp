@@ -82,7 +82,8 @@ Location: `mobile/`
 ```bash
 cd mobile
 npm install
-# or: yarn
+# or:
+yarn install (recommended)
 ```
 
 2. iOS native deps (first time or after native updates):
@@ -92,14 +93,15 @@ npm install
 bundle install
 
 # Install pods
-cd ios && bundle exec pod install && cd ..
+cd ios && pod install && cd ..
 ```
 
 3. Start Metro (JavaScript bundler):
 
 ```bash
 npm start
-# or: yarn start
+# or:
+ yarn start (recommended)
 ```
 
 4. In a new terminal, build and run the app:
@@ -109,7 +111,8 @@ Android:
 ```bash
 cd mobile
 npm run android
-# or: yarn android
+# or:
+yarn android (recommended)
 ```
 
 iOS:
@@ -117,7 +120,8 @@ iOS:
 ```bash
 cd mobile
 npm run ios
-# or: yarn ios
+# or:
+yarn ios (recommended)
 ```
 
 The app is configured to use:
@@ -146,27 +150,5 @@ For physical devices on the same network, update `API_BASE_URL` and `SOCKET_URL`
   - Ensure the client attaches `Authorization: Bearer <token>` after login.
 
 ---
-
-### Quick Start (TL;DR)
-
-Server:
-
-```bash
-cd server && npm install
-echo 'PORT=5050
-MONGO_URI="mongodb://127.0.0.1:27017/chatapp"
-JWT_SECRET="dev"' > .env
-npm run dev
-```
-
-Mobile:
-
-```bash
-cd mobile && npm install
-bundle install && (cd ios && bundle exec pod install)
-npm start
-# new terminal
-npm run ios  # or: npm run android
-```
 
 
