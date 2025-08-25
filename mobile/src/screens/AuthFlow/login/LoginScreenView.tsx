@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { colors } from '../../../helpers/styles';
-import GoogleIcon from '../../../components/icons/GoogleIcon';
+
 
 type LoginScreenViewProps = {
   onContinue?: (email: string, password: string) => void;
